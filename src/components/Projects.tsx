@@ -30,7 +30,7 @@ const projects = [
     image: "/images/forest-fire.png",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
     github: "https://github.com/hey-om7/forest-fire-predictor",
-    demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
+    demo: null,
     featured: false
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     image: "/images/goodeyes.jpg",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
     github: "https://github.com/hey-om7/goodEyesPython",
-    demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
+    demo: null,
     featured: false
   },
   
@@ -283,7 +283,7 @@ const Projects = () => {
               <Button 
                 variant="outline" 
                 onClick={() => setIsPrivateDialogOpen(false)}
-                className="border-border text-foreground hover:bg-background"
+                className="border-border text-foreground hover:bg-background hover:text-foreground hover:shadow-glow hover:scale-105 transition-all duration-300"
               >
                 Close
               </Button>
@@ -303,40 +303,40 @@ const Projects = () => {
 
       {/* Detailed Project Dialog */}
       <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
-        <DialogContent className="bg-gradient-secondary border-border/50 backdrop-blur-sm max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold text-primary flex items-center gap-3">
-              {selectedProjectData?.title}
-              {selectedProjectData?.featured && (
-                <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
-                  Featured
-                </Badge>
-              )}
-            </DialogTitle>
-          </DialogHeader>
+        <DialogContent className="bg-gradient-secondary border-border/50 backdrop-blur-sm max-w-[95vw] md:max-w-4xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto mx-2">
+                      <DialogHeader>
+              <DialogTitle className="text-2xl md:text-3xl font-bold text-primary flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+                {selectedProjectData?.title}
+                {selectedProjectData?.featured && (
+                  <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 self-start md:self-auto">
+                    Featured
+                  </Badge>
+                )}
+              </DialogTitle>
+            </DialogHeader>
           
           {selectedProjectData && (
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {/* Project Image */}
               <div className="relative overflow-hidden rounded-lg">
                 <img 
                   src={selectedProjectData.image} 
                   alt={selectedProjectData.title}
-                  className="w-full h-64 md:h-80 object-cover"
+                  className="w-full h-48 sm:h-64 md:h-80 object-cover"
                 />
               </div>
 
               {/* Project Description */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-foreground">Description</h3>
-                <p className="text-muted-foreground leading-relaxed">
+              <div className="space-y-3 md:space-y-4">
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">Description</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                   {selectedProjectData.description}
                 </p>
               </div>
 
               {/* Technologies Used */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-foreground">Technologies Used</h3>
+              <div className="space-y-3 md:space-y-4">
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2">
                   {selectedProjectData.technologies.map((tech: string, index: number) => (
                     <Badge 
@@ -351,9 +351,9 @@ const Projects = () => {
               </div>
 
               {/* Project Links */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-foreground">Project Links</h3>
-                <div className="flex flex-wrap gap-3">
+              <div className="space-y-3 md:space-y-4">
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">Project Links</h3>
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3">
                   {selectedProjectData.demo && (
                     <Button 
                       onClick={() => window.open(selectedProjectData.demo, "_blank")}
