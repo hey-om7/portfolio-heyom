@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-slate-950 to-blue-950">
         {/* Layered animated gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-purple-600/10 to-emerald-500/10 animate-gradient"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-400/5 via-transparent to-purple-500/5 animate-gradient" style={{animationDelay: '1s'}}></div>
@@ -202,9 +202,23 @@ const Hero: React.FC = () => {
                     if (fallback) fallback.style.display = 'flex';
                   }}
                 />
-                {/* Fallback initials */}
-                <div className="hidden w-full h-full bg-gradient-to-br from-emerald-500 to-purple-600 items-center justify-center text-white text-4xl sm:text-5xl md:text-6xl font-bold">
-                  OA
+                {/* Fallback image */}
+                <div className="hidden w-full h-full bg-gradient-to-br from-emerald-500 to-purple-600 items-center justify-center">
+                  <img
+                    src="/images/om-insta-dp.png"
+                    alt="Om Ambarkar"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const initials = target.nextElementSibling as HTMLElement;
+                      if (initials) initials.style.display = 'flex';
+                    }}
+                  />
+                  {/* Final fallback - initials */}
+                  <div className="hidden w-full h-full bg-gradient-to-br from-emerald-500 to-purple-600 items-center justify-center text-white text-4xl sm:text-5xl md:text-6xl font-bold">
+                    OA
+                  </div>
                 </div>
               </div>
 
