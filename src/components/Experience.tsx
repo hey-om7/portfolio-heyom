@@ -42,36 +42,52 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-primary"></div>
+            {/* Enhanced timeline line with gradient */}
+            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary opacity-60"></div>
             
             {experiences.map((exp, index) => (
-              <div key={index} className="relative mb-12 ml-16">
-                {/* Timeline dot */}
-                <div className="absolute -left-8 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-glow"></div>
+              <div key={index} className="relative mb-12 ml-16 group">
+                {/* Enhanced timeline dot with animation */}
+                <div className="absolute -left-8 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-glow group-hover:scale-125 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
                 
-                <Card className="hover:shadow-card transition-all duration-300 hover:scale-[1.02] bg-gradient-secondary border-border/50">
-                  <CardHeader>
+                {/* Enhanced card with better styling */}
+                <Card className="hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] bg-gradient-secondary border-border/50 group-hover:border-primary/30 relative overflow-hidden">
+                  {/* Subtle background pattern */}
+                  <div className="absolute inset-0 opacity-5">
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+                      backgroundSize: '20px 20px'
+                    }}></div>
+                  </div>
+                  
+                  <CardHeader className="relative z-10">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                      <div>
-                        <CardTitle className="text-xl text-foreground">{exp.title}</CardTitle>
-                        <CardDescription className="text-lg text-primary font-semibold">
+                      <div className="mb-4 md:mb-0">
+                        <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                          {exp.title}
+                        </CardTitle>
+                        <CardDescription className="text-lg text-primary font-semibold mt-1">
                           {exp.company}
                         </CardDescription>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-accent font-medium">{exp.period}</p>
-                        <p className="text-sm text-muted-foreground">{exp.location}</p>
+                        <p className="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full inline-block">
+                          {exp.period}
+                        </p>
+                        <p className="text-sm text-muted-foreground mt-1">{exp.location}</p>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-card-foreground mb-4">{exp.description}</p>
+                  
+                  <CardContent className="relative z-10">
+                    <p className="text-card-foreground mb-6 leading-relaxed">{exp.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm border border-primary/20"
+                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300 cursor-default group-hover:scale-105"
                         >
                           {tech}
                         </span>

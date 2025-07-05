@@ -6,6 +6,7 @@ import Technologies from "@/components/Technologies";
 import OpenSource from "@/components/OpenSource";
 import ThreeD from "@/components/ThreeD";
 import Contact from "@/components/Contact";
+import FloatingActionButton from "@/components/FloatingActionButton";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
         <ThreeD />
         <Contact />
       </main>
+      <FloatingActionButton />
     </div>
   );
 };

@@ -68,20 +68,32 @@ const Technologies = () => {
           {techCategories.map((category, index) => (
             <Card 
               key={index} 
-              className="group bg-gradient-secondary border-border/50 hover:shadow-card transition-all duration-300 hover:scale-[1.02] hover:border-primary/30"
+              className="group bg-gradient-secondary border-border/50 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-primary/30 relative overflow-hidden"
             >
-              <CardHeader className="text-center pb-4">
-                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
+              {/* Subtle background pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+                  backgroundSize: '15px 15px'
+                }}></div>
+              </div>
+              
+              <CardHeader className="text-center pb-4 relative z-10">
+                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3">
                   {category.icon}
                 </div>
-                <CardTitle className="text-xl text-foreground">{category.category}</CardTitle>
+                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                  {category.category}
+                </CardTitle>
               </CardHeader>
-              <CardContent>
+              
+              <CardContent className="relative z-10">
                 <div className="flex flex-wrap gap-2">
                   {category.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-colors cursor-default"
+                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300 cursor-default group-hover:scale-105"
+                      style={{ transitionDelay: `${techIndex * 50}ms` }}
                     >
                       {tech}
                     </span>
@@ -92,25 +104,25 @@ const Technologies = () => {
           ))}
         </div>
 
-        {/* Proficiency Levels */}
+        {/* Enhanced Proficiency Levels */}
         <div className="mt-16 max-w-4xl mx-auto">
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
             Proficiency Levels
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50">
-              <div className="text-3xl mb-3">🥇</div>
-              <h4 className="text-lg font-semibold text-foreground mb-2">Expert</h4>
+            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥇</div>
+              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Expert</h4>
               <p className="text-sm text-muted-foreground">React, Node.js, TypeScript, PostgreSQL</p>
             </div>
-            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50">
-              <div className="text-3xl mb-3">🥈</div>
-              <h4 className="text-lg font-semibold text-foreground mb-2">Advanced</h4>
+            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥈</div>
+              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Advanced</h4>
               <p className="text-sm text-muted-foreground">Python, Go, AWS, Docker, GraphQL</p>
             </div>
-            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50">
-              <div className="text-3xl mb-3">🥉</div>
-              <h4 className="text-lg font-semibold text-foreground mb-2">Intermediate</h4>
+            <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥉</div>
+              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Intermediate</h4>
               <p className="text-sm text-muted-foreground">Flutter, Kubernetes, Machine Learning</p>
             </div>
           </div>

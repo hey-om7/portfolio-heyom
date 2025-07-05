@@ -43,6 +43,7 @@
     
     --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
     --shadow-card: 0 10px 30px hsl(222 84% 4% / 0.5);
+    --shadow-3xl: 0 25px 50px -12px hsl(222 84% 4% / 0.8);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -110,5 +111,611 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delay-1 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-float-delay-2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounceSlow 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotateSlow 20s linear infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .animate-text-glow {
+    animation: textGlow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-border-glow {
+    animation: borderGlow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-card-hover {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  }
+
+  .animate-button-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-button-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .animate-input-focus {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-input-focus:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  }
+
+  .animate-nav-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-nav-item:hover {
+    transform: translateY(-1px);
+  }
+
+  .animate-nav-item.active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .animate-timeline-dot {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-timeline-dot:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .animate-tech-badge {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-tech-badge:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .animate-project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  }
+
+  .animate-contact-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-contact-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .animate-hero-text {
+    animation: heroTextReveal 1s ease-out forwards;
+  }
+
+  .animate-hero-text-delay-1 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  .animate-hero-text-delay-2 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 0.4s;
+  }
+
+  .animate-hero-text-delay-3 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 0.6s;
+  }
+
+  .animate-hero-text-delay-4 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 0.8s;
+  }
+
+  .animate-hero-text-delay-5 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 1s;
+  }
+
+  .animate-hero-text-delay-6 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 1.2s;
+  }
+
+  .animate-hero-text-delay-7 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 1.4s;
+  }
+
+  .animate-hero-text-delay-8 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 1.6s;
+  }
+
+  .animate-hero-text-delay-9 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 1.8s;
+  }
+
+  .animate-hero-text-delay-10 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 2s;
+  }
+
+  .animate-hero-text-delay-11 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 2.2s;
+  }
+
+  .animate-hero-text-delay-12 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 2.4s;
+  }
+
+  .animate-hero-text-delay-13 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 2.6s;
+  }
+
+  .animate-hero-text-delay-14 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 2.8s;
+  }
+
+  .animate-hero-text-delay-15 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 3s;
+  }
+
+  .animate-hero-text-delay-16 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 3.2s;
+  }
+
+  .animate-hero-text-delay-17 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 3.4s;
+  }
+
+  .animate-hero-text-delay-18 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 3.6s;
+  }
+
+  .animate-hero-text-delay-19 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 3.8s;
+  }
+
+  .animate-hero-text-delay-20 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 4s;
+  }
+
+  .animate-hero-text-delay-21 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 4.2s;
+  }
+
+  .animate-hero-text-delay-22 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 4.4s;
+  }
+
+  .animate-hero-text-delay-23 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 4.6s;
+  }
+
+  .animate-hero-text-delay-24 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 4.8s;
+  }
+
+  .animate-hero-text-delay-25 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 5s;
+  }
+
+  .animate-hero-text-delay-26 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 5.2s;
+  }
+
+  .animate-hero-text-delay-27 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 5.4s;
+  }
+
+  .animate-hero-text-delay-28 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 5.6s;
+  }
+
+  .animate-hero-text-delay-29 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 5.8s;
+  }
+
+  .animate-hero-text-delay-30 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 6s;
+  }
+
+  .animate-hero-text-delay-31 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 6.2s;
+  }
+
+  .animate-hero-text-delay-32 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 6.4s;
+  }
+
+  .animate-hero-text-delay-33 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 6.6s;
+  }
+
+  .animate-hero-text-delay-34 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 6.8s;
+  }
+
+  .animate-hero-text-delay-35 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 7s;
+  }
+
+  .animate-hero-text-delay-36 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 7.2s;
+  }
+
+  .animate-hero-text-delay-37 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 7.4s;
+  }
+
+  .animate-hero-text-delay-38 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 7.6s;
+  }
+
+  .animate-hero-text-delay-39 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 7.8s;
+  }
+
+  .animate-hero-text-delay-40 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 8s;
+  }
+
+  .animate-hero-text-delay-41 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 8.2s;
+  }
+
+  .animate-hero-text-delay-42 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 8.4s;
+  }
+
+  .animate-hero-text-delay-43 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 8.6s;
+  }
+
+  .animate-hero-text-delay-44 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 8.8s;
+  }
+
+  .animate-hero-text-delay-45 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 9s;
+  }
+
+  .animate-hero-text-delay-46 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 9.2s;
+  }
+
+  .animate-hero-text-delay-47 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 9.4s;
+  }
+
+  .animate-hero-text-delay-48 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 9.6s;
+  }
+
+  .animate-hero-text-delay-49 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 9.8s;
+  }
+
+  .animate-hero-text-delay-50 {
+    animation: heroTextReveal 1s ease-out forwards;
+    animation-delay: 10s;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  }
+}
+
+@keyframes borderGlow {
+  from {
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+  to {
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(222 47% 12%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(262 83% 58%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(262 83% 68%);
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(262 83% 58%);
+  color: hsl(0 0% 98%);
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid hsl(262 83% 58%);
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
