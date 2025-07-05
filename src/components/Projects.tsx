@@ -1,6 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
+import { Lock, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -8,8 +11,17 @@ const projects = [
     description: "Developed a full-stack mobile application using with Spring boot serving a REST API with Flutter and React as the frontend. Live on Google Playstore with 200+ Active users. Integrated payment gateway for premium access and hosted the app on AWS for scalability and security. Utilized MongoDB for flexible, scalable data storage, supporting dynamic educational content.",
     image: "/images/dentolearn.png",
     technologies: ["React", "Node.js", "MongoDB", "Spring Boot", "Flutter", "Docker", "AWS S3", "AWS EC2", "AWS ALG"],
-    github: "https://github.com/example/ecommerce",
+    github: null,
     demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
+    featured: true
+  },
+  {
+    title: "ZeroLag",
+    description: "Zerolag is a 24-hour monitoring system designed to detect website or service downtime in real-time. It continuously checks system availability and instantly sends email alerts when outages are detected. With rapid notifications and round-the-clock tracking, Zerolag ensures you’re always aware of any disruptions.",
+    image: "/images/zerolag-1.png",
+    technologies: ["React", "Node.js", "MongoDB", "Spring Boot", "Flutter", "Docker", "AWS S3"],
+    github: null,
+    demo: "https://zerolag.site/",
     featured: true
   },
   {
@@ -17,16 +29,46 @@ const projects = [
     description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
     image: "/images/forest-fire.png",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
+    github: "https://github.com/hey-om7/forest-fire-predictor",
+    demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
+    featured: false
+  },
+  {
+    title: "Project Attendle",
+    description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
+    image: "/images/attendle.png",
+    technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
+    github: "https://github.com/example/taskapp",
+    demo: null,
+    featured: false
+  },
+  {
+    title: "Good Eyes",
+    description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
+    image: "/images/goodeyes.jpg",
+    technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
     github: "https://github.com/example/taskapp",
     demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
-    featured: true
+    featured: false
   },
   
 ];
 
 const Projects = () => {
+  const [isPrivateDialogOpen, setIsPrivateDialogOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
+
+  const handleGitHubClick = (project: any) => {
+    if (project.github) {
+      window.open(project.github, "_blank");
+    } else {
+      setSelectedProject(project.title);
+      setIsPrivateDialogOpen(true);
+    }
+  };
 
   return (
     <section className="py-20 bg-secondary/50" id="projects">
@@ -93,11 +135,15 @@ const Projects = () => {
                     <span className="group-hover:translate-x-0.5 transition-transform duration-300">Live Demo</span>
                   </Button>
                   <Button 
+                    onClick={() => handleGitHubClick(project)}
                     variant="outline" 
                     size="sm" 
                     className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
-                    GitHub
+                    <span className="flex items-center gap-1">
+                      {project.github ? <ExternalLink className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
+                      GitHub
+                    </span>
                   </Button>
                 </div>
               </CardContent>
@@ -152,14 +198,18 @@ const Projects = () => {
                     size="sm" 
                     className="flex-1 text-xs border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300"
                   >
-                    Demo
+                    Live Demo
                   </Button>
                   <Button 
+                    onClick={() => handleGitHubClick(project)}
                     variant="outline" 
                     size="sm" 
                     className="flex-1 text-xs border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
-                    Code
+                    <span className="flex items-center gap-1">
+                      {project.github ? <ExternalLink className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
+                      Code
+                    </span>
                   </Button>
                 </div>
               </CardContent>
@@ -167,6 +217,47 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Private Project Dialog */}
+      <Dialog open={isPrivateDialogOpen} onOpenChange={setIsPrivateDialogOpen}>
+        <DialogContent className="sm:max-w-[425px] bg-gradient-secondary border-border/50">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-foreground">
+              <Lock className="w-5 h-5 text-primary" />
+              Private Project
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {selectedProject} is a private project and the source code cannot be shared publicly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+              <p className="text-sm text-foreground">
+                This project contains proprietary code and business logic that cannot be made public. 
+                If you're interested in discussing this project or similar work, please reach out through the contact form.
+              </p>
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button 
+                variant="outline" 
+                onClick={() => setIsPrivateDialogOpen(false)}
+                className="border-border text-foreground hover:bg-background"
+              >
+                Close
+              </Button>
+              <Button 
+                onClick={() => {
+                  setIsPrivateDialogOpen(false);
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-gradient-primary hover:shadow-glow"
+              >
+                Contact Me
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
