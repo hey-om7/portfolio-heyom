@@ -3,63 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - Om Ambarkar</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #22c55e, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #94a3b8;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-    </style>
+    <title>Redirecting...</title>
+    <script>
+        // Single Page Apps for GitHub Pages
+        // MIT License
+        // https://github.com/rafgraph/spa-github-pages
+        // This script takes the current url and converts the path and query
+        // string into just a query string, and then redirects the browser
+        // to the new url with only a query string and hash fragment.
+        var pathSegmentsToKeep = 1;
+
+        var l = window.location;
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash
+        );
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>404</h1>
-        <p>Oops! The page you're looking for doesn't exist.</p>
-        <a href="/" class="btn">Go Home</a>
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white;">
+        <div style="text-align: center;">
+            <h1 style="font-size: 2rem; margin-bottom: 1rem; background: linear-gradient(135deg, #22c55e, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Redirecting...</h1>
+            <p style="color: #94a3b8;">If you are not redirected automatically, <a href="/" style="color: #22c55e; text-decoration: none;">click here</a>.</p>
+        </div>
     </div>
-    <script>
-        // Redirect to home page after 5 seconds
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 5000);
-    </script>
 </body>
 </html> 
