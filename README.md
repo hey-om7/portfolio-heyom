@@ -24,8 +24,8 @@ A modern, responsive portfolio website built with React, TypeScript, Vite, and T
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/hey-om7/portfolio-2025.git
-cd portfolio-2025
+git clone https://github.com/hey-om7/portfolio-heyom.git
+cd portfolio-heyom
 ```
 
 2. Install dependencies:
@@ -63,7 +63,7 @@ npm run deploy
 1. Go to your repository settings on GitHub
 2. Navigate to "Pages" in the sidebar
 3. Set the source to "GitHub Actions"
-4. Your site will be available at: `https://hey-om7.github.io/portfolio-2025/`
+4. Your site will be available at: `https://hey-om7.github.io/portfolio-heyom/`
 
 ## 📁 Project Structure
 
