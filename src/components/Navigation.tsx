@@ -98,15 +98,15 @@ const Navigation = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative transition-all duration-300 group ${
                   activeSection === item.id
-                    ? "bg-primary/15 text-primary border border-primary/30 shadow-sm"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-sm hover:bg-emerald-500/25 hover:text-emerald-300"
+                    : "text-muted-foreground hover:text-emerald-400 hover:bg-emerald-500/10"
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-emerald-400 rounded-full"></div>
                 )}
-                <div className="absolute inset-0 bg-primary/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-emerald-500/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
             ))}
           </div>
@@ -154,8 +154,8 @@ const Navigation = () => {
                 isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
               } ${
                 activeSection === item.id
-                  ? "bg-primary/15 text-primary border border-primary/30"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                  ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 hover:text-emerald-300"
+                  : "text-muted-foreground hover:text-emerald-400 hover:bg-emerald-500/10"
               }`}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
