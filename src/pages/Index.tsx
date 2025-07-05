@@ -4,7 +4,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Technologies from "@/components/Technologies";
 import OpenSource from "@/components/OpenSource";
-import ThreeD from "@/components/ThreeD";
+import Hobbies from "@/components/Hobbies";
 import Contact from "@/components/Contact";
 import FloatingActionButton from "@/components/FloatingActionButton";
 
@@ -18,7 +18,7 @@ const Index = () => {
         <Projects />
         <Technologies />
         <OpenSource />
-        <ThreeD />
+        <Hobbies />
         <Contact />
       </main>
       <FloatingActionButton />

@@ -12,7 +12,7 @@ const Navigation = () => {
     { id: "projects", label: "Projects" },
     { id: "technologies", label: "Tech Stack" },
     { id: "opensource", label: "Open Source" },
-    { id: "3d-modeling", label: "3D Design" },
+    { id: "hobbies", label: "Hobbies" },
     { id: "contact", label: "Contact" }
   ];
 
