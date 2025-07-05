@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
-import { Lock, ExternalLink } from "lucide-react";
+import { Lock, ExternalLink, Github, Eye } from "lucide-react";
 
 const projects = [
   {
@@ -17,7 +17,7 @@ const projects = [
   },
   {
     title: "ZeroLag",
-    description: "Zerolag is a 24-hour monitoring system designed to detect website or service downtime in real-time. It continuously checks system availability and instantly sends email alerts when outages are detected. With rapid notifications and round-the-clock tracking, Zerolag ensures you’re always aware of any disruptions.",
+    description: "Zerolag is a 24-hour monitoring system designed to detect website or service downtime in real-time. It continuously checks system availability and instantly sends email alerts when outages are detected. With rapid notifications and round-the-clock tracking, Zerolag ensures you're always aware of any disruptions.",
     image: "/images/zerolag-1.png",
     technologies: ["React", "Node.js", "MongoDB", "Spring Boot", "Flutter", "Docker", "AWS S3"],
     github: null,
@@ -47,7 +47,7 @@ const projects = [
     description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
     image: "/images/goodeyes.jpg",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
-    github: "https://github.com/example/taskapp",
+    github: "https://github.com/hey-om7/goodEyesPython",
     demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
     featured: false
   },
@@ -57,6 +57,8 @@ const projects = [
 const Projects = () => {
   const [isPrivateDialogOpen, setIsPrivateDialogOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
+  const [selectedProjectData, setSelectedProjectData] = useState<any>(null);
   
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
@@ -68,6 +70,11 @@ const Projects = () => {
       setSelectedProject(project.title);
       setIsPrivateDialogOpen(true);
     }
+  };
+
+  const handleProjectCardClick = (project: any) => {
+    setSelectedProjectData(project);
+    setIsProjectDialogOpen(true);
   };
 
   return (
@@ -85,7 +92,11 @@ const Projects = () => {
         {/* Featured Projects with enhanced design */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {featuredProjects.map((project, index) => (
-            <Card key={index} className="group overflow-hidden bg-gradient-secondary border-border/50 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] relative flex flex-col">
+            <Card 
+              key={index} 
+              className="group overflow-hidden bg-gradient-secondary border-border/50 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] relative flex flex-col cursor-pointer"
+              onClick={() => handleProjectCardClick(project)}
+            >
               {/* Enhanced image container */}
               <div className="relative overflow-hidden">
                 <img 
@@ -99,6 +110,13 @@ const Projects = () => {
                 <Badge variant="secondary" className="absolute top-4 left-4 bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
                   Featured
                 </Badge>
+                
+                {/* Click indicator */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <Eye className="w-4 h-4 text-white" />
+                  </div>
+                </div>
               </div>
               
               <CardHeader className="pb-4 flex-shrink-0">
@@ -127,7 +145,10 @@ const Projects = () => {
                 {/* Bottom-aligned action buttons */}
                 <div className="flex gap-3 mt-auto">
                   <Button
-                    onClick={() => window.open(project.demo, "_blank")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(project.demo, "_blank");
+                    }}
                     variant="default" 
                     size="sm" 
                     className="flex-1 bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
@@ -135,7 +156,10 @@ const Projects = () => {
                     <span className="group-hover:translate-x-0.5 transition-transform duration-300">Live Demo</span>
                   </Button>
                   <Button 
-                    onClick={() => handleGitHubClick(project)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleGitHubClick(project);
+                    }}
                     variant="outline" 
                     size="sm" 
                     className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -154,7 +178,11 @@ const Projects = () => {
         {/* Other Projects Grid with enhanced styling */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherProjects.map((project, index) => (
-            <Card key={index} className="group bg-gradient-secondary border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden">
+            <Card 
+              key={index} 
+              className="group bg-gradient-secondary border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden cursor-pointer"
+              onClick={() => handleProjectCardClick(project)}
+            >
               {/* Enhanced image container */}
               <div className="relative overflow-hidden">
                 <img 
@@ -163,6 +191,13 @@ const Projects = () => {
                   className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Click indicator */}
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <Eye className="w-3 h-3 text-white" />
+                  </div>
+                </div>
               </div>
               
               <CardHeader className="pb-3">
@@ -194,14 +229,21 @@ const Projects = () => {
                 {/* Enhanced action buttons */}
                 <div className="flex gap-2">
                   <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProjectCardClick(project);
+                    }}
                     variant="outline" 
                     size="sm" 
                     className="flex-1 text-xs border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300"
                   >
-                    Live Demo
+                    View More
                   </Button>
                   <Button 
-                    onClick={() => handleGitHubClick(project)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleGitHubClick(project);
+                    }}
                     variant="outline" 
                     size="sm" 
                     className="flex-1 text-xs border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -256,6 +298,108 @@ const Projects = () => {
               </Button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Detailed Project Dialog */}
+      <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
+        <DialogContent className="bg-gradient-secondary border-border/50 backdrop-blur-sm max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold text-primary flex items-center gap-3">
+              {selectedProjectData?.title}
+              {selectedProjectData?.featured && (
+                <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                  Featured
+                </Badge>
+              )}
+            </DialogTitle>
+          </DialogHeader>
+          
+          {selectedProjectData && (
+            <div className="space-y-6">
+              {/* Project Image */}
+              <div className="relative overflow-hidden rounded-lg">
+                <img 
+                  src={selectedProjectData.image} 
+                  alt={selectedProjectData.title}
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+              </div>
+
+              {/* Project Description */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-foreground">Description</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {selectedProjectData.description}
+                </p>
+              </div>
+
+              {/* Technologies Used */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-foreground">Technologies Used</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProjectData.technologies.map((tech: string, index: number) => (
+                    <Badge 
+                      key={index} 
+                      variant="outline" 
+                      className="bg-background/50 border-primary/30 backdrop-blur-sm text-foreground hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* Project Links */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-foreground">Project Links</h3>
+                <div className="flex flex-wrap gap-3">
+                  {selectedProjectData.demo && (
+                    <Button 
+                      onClick={() => window.open(selectedProjectData.demo, "_blank")}
+                      className="bg-gradient-primary hover:bg-gradient-primary/90"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Live Demo
+                    </Button>
+                  )}
+                  {selectedProjectData.github ? (
+                    <Button 
+                      onClick={() => window.open(selectedProjectData.github, "_blank")}
+                      variant="outline"
+                      className="bg-background/50 border-border/50 backdrop-blur-sm hover:bg-background/70 text-foreground hover:text-foreground hover:shadow-glow hover:scale-105 transition-all duration-300"
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      View Code
+                    </Button>
+                  ) : (
+                    <Button 
+                      onClick={() => {
+                        setIsProjectDialogOpen(false);
+                        setSelectedProject(selectedProjectData.title);
+                        setIsPrivateDialogOpen(true);
+                      }}
+                      variant="outline"
+                      className="bg-background/50 border-border/50 backdrop-blur-sm hover:bg-background/70 text-foreground hover:text-foreground hover:shadow-glow hover:scale-105 transition-all duration-300"
+                    >
+                      <Lock className="w-4 h-4 mr-2" />
+                      Private Code
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {/* Close Button */}
+              <div className="pt-4">
+                <Button 
+                  onClick={() => setIsProjectDialogOpen(false)}
+                  className="w-full bg-gradient-primary hover:bg-gradient-primary/90"
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </section>
