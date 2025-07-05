@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 const contactMethods = [
   {
@@ -36,6 +37,9 @@ const contactMethods = [
 ];
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handleEmailClick = () => {
     const email = "om.ambarkar@gmail.com";
     const subject = "I saw your portfolio and wanted to connect.";
@@ -50,6 +54,35 @@ const Contact = () => {
       window.open(`https://${method.value}`, '_blank');
     } else if (method.title === "GitHub") {
       window.open(method.value, '_blank');
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xblyegzy', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -84,13 +117,15 @@ const Contact = () => {
             </CardHeader>
             
             <CardContent className="relative z-10">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2 group">
                     <Label htmlFor="firstName" className="text-foreground group-hover:text-primary transition-colors duration-300">First Name</Label>
                     <Input 
                       id="firstName" 
+                      name="firstName"
                       placeholder="John"
+                      required
                       className="bg-background border-border focus:border-primary transition-all duration-300 hover:border-primary/50 focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
@@ -98,7 +133,9 @@ const Contact = () => {
                     <Label htmlFor="lastName" className="text-foreground group-hover:text-primary transition-colors duration-300">Last Name</Label>
                     <Input 
                       id="lastName" 
+                      name="lastName"
                       placeholder="Doe"
+                      required
                       className="bg-background border-border focus:border-primary transition-all duration-300 hover:border-primary/50 focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
@@ -108,8 +145,10 @@ const Contact = () => {
                   <Label htmlFor="email" className="text-foreground group-hover:text-primary transition-colors duration-300">Email</Label>
                   <Input 
                     id="email" 
+                    name="email"
                     type="email" 
                     placeholder="john@example.com"
+                    required
                     className="bg-background border-border focus:border-primary transition-all duration-300 hover:border-primary/50 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
@@ -118,7 +157,9 @@ const Contact = () => {
                   <Label htmlFor="subject" className="text-foreground group-hover:text-primary transition-colors duration-300">Subject</Label>
                   <Input 
                     id="subject" 
+                    name="subject"
                     placeholder="Project Collaboration"
+                    required
                     className="bg-background border-border focus:border-primary transition-all duration-300 hover:border-primary/50 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
@@ -127,13 +168,34 @@ const Contact = () => {
                   <Label htmlFor="message" className="text-foreground group-hover:text-primary transition-colors duration-300">Message</Label>
                   <Textarea 
                     id="message" 
+                    name="message"
                     placeholder="Tell me about your project, timeline, and any specific requirements..."
+                    required
                     className="bg-background border-border focus:border-primary transition-all duration-300 hover:border-primary/50 focus:ring-2 focus:ring-primary/20 min-h-[120px] resize-none"
                   />
                 </div>
                 
-                <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group">
-                  <span className="group-hover:translate-x-0.5 transition-transform duration-300">Send Message</span>
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 text-sm">
+                    ✅ Thank you! Your message has been sent successfully.
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
+                    ❌ Sorry, there was an error sending your message. Please try again.
+                  </div>
+                )}
+                
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group"
+                >
+                  <span className="group-hover:translate-x-0.5 transition-transform duration-300">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </span>
                 </Button>
               </form>
             </CardContent>
