@@ -2,19 +2,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const techCategories = [
   {
-    category: "Frontend",
-    icon: "🎨",
+    category: "Languages",
+    icon: "⚙️",
     technologies: [
-      "React", "Vue.js", "Next.js", "TypeScript", "JavaScript",
-      "TailwindCSS", "SASS", "Styled Components", "Material-UI", "Chakra UI"
+      "Java", "Python", "C", "Dart", "JavaScript", "SQL", "NoSQL", "HTML", "CSS"
     ]
   },
   {
-    category: "Backend", 
-    icon: "⚙️",
+    category: "Frameworks", 
+    icon: "🛠️",
     technologies: [
-      "Node.js", "Python", "Go", "Express", "FastAPI",
-      "GraphQL", "REST APIs", "WebSocket", "Microservices", "Serverless"
+      "Spring Boot", "ReactJs", "Flask", "Django", "Hibernate", "FastAPI",
+      "REST APIs", "WebSocket", "Microservices", "Serverless"
     ]
   },
   {
@@ -22,31 +21,28 @@ const techCategories = [
     icon: "🗄️", 
     technologies: [
       "PostgreSQL", "MongoDB", "Redis", "MySQL", "DynamoDB",
-      "Prisma", "Mongoose", "TypeORM", "Supabase", "Firebase"
+       "Firebase"
     ]
   },
   {
-    category: "DevOps",
+    category: "Technologies",
     icon: "🚀",
     technologies: [
-      "Docker", "Kubernetes", "AWS", "GCP", "Azure",
-      "CI/CD", "Jenkins", "GitHub Actions", "Terraform", "Nginx"
+      "Docker", "Kubernetes", "AWS-EC2", "AWS-S3", "AWS-Lambda",
+      "AWS-DynamoDB",
+      "CI/CD", "Jenkins", "GitHub Actions", 
+      "Git", "GitHub",  "JPA", "JWT"
     ]
   },
   {
-    category: "Tools",
-    icon: "🛠️",
+    category: "Tools & Others",
+    icon: "🔧",
     technologies: [
-      "Git", "VS Code", "Figma", "Postman", "Jest",
-      "Cypress", "Webpack", "Vite", "ESLint", "Prettier"
-    ]
-  },
-  {
-    category: "Mobile",
-    icon: "📱",
-    technologies: [
-      "React Native", "Flutter", "Expo", "Progressive Web Apps",
-      "Ionic", "Cordova", "Native Development", "App Store", "Play Store"
+      "Git", "VS Code", "Figma", "Postman", "Swagger", "Jira",
+      "Confluence",
+      "Insomnia","JUNIT", "VS Code", "Mokito", "IntelliJ IDEA", "Android Studio", 
+      "Chrome DevTools","Docker",
+        "GitHub Desktop", "MongoDB Compass"
     ]
   }
 ];
@@ -113,17 +109,17 @@ const Technologies = () => {
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
               <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥇</div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Expert</h4>
-              <p className="text-sm text-muted-foreground">React, Node.js, TypeScript, PostgreSQL</p>
+              <p className="text-sm text-muted-foreground">Spring Boot, Flutter, MongoDB, AWS, Python, SQL</p>
             </div>
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
               <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥈</div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Advanced</h4>
-              <p className="text-sm text-muted-foreground">Python, Go, AWS, Docker, GraphQL</p>
+              <p className="text-sm text-muted-foreground">ReactJS</p>
             </div>
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
               <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥉</div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Intermediate</h4>
-              <p className="text-sm text-muted-foreground">Flutter, Kubernetes, Machine Learning</p>
+              <p className="text-sm text-muted-foreground">Kubernetes, Machine Learning</p>
             </div>
           </div>
         </div>

@@ -36,6 +36,23 @@ const contactMethods = [
 ];
 
 const Contact = () => {
+  const handleEmailClick = () => {
+    const email = "om.ambarkar@gmail.com";
+    const subject = "I saw your portfolio and wanted to connect.";
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+    window.open(mailtoLink, '_blank');
+  };
+
+  const handleContactMethodClick = (method: any) => {
+    if (method.title === "Email") {
+      handleEmailClick();
+    } else if (method.title === "LinkedIn") {
+      window.open(`https://${method.value}`, '_blank');
+    } else if (method.title === "GitHub") {
+      window.open(method.value, '_blank');
+    }
+  };
+
   return (
     <section className="py-20 bg-secondary/50" id="contact">
       <div className="container mx-auto px-6">
@@ -158,6 +175,7 @@ const Contact = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
+                      onClick={() => handleContactMethodClick(method)}
                       className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:scale-105"
                     >
                       {method.action}
@@ -206,6 +224,7 @@ const Contact = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
+              onClick={handleEmailClick}
               className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group"
             >
               <span className="group-hover:translate-x-0.5 transition-transform duration-300">Schedule a Call</span>
