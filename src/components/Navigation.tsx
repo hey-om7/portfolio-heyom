@@ -22,26 +22,46 @@ const Navigation = () => {
       
       // Update active section based on scroll position
       const sections = navItems.map(item => item.id);
-      const currentSection = sections.find(section => {
+      let currentSection = "home"; // Default to home
+      
+      // Check each section to see which one is currently in view
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          const offset = 100; // Offset for better detection
+          
+          // If we're at the top of the page, default to home
+          if (window.scrollY < 100) {
+            currentSection = "home";
+            break;
+          }
+          
+          // Check if this section is in the viewport
+          if (rect.top <= offset && rect.bottom >= offset) {
+            currentSection = section;
+            break;
+          }
         }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
       }
+      
+      setActiveSection(currentSection);
     };
 
+    // Initial call to set the correct active section
+    handleScroll();
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
+    
+    // Immediately update the active section when clicked
+    setActiveSection(sectionId);
+    
     if (sectionId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -61,7 +81,10 @@ const Navigation = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo with enhanced styling */}
-          <div className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer">
+          <div 
+            className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
+            onClick={() => scrollToSection("home")}
+          >
             &lt;heyom /&gt;
           </div>
 
