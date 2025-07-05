@@ -65,7 +65,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Enhanced Contact Form */}
           <Card className="bg-gradient-secondary border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-500 relative overflow-hidden">
             {/* Subtle background pattern */}
@@ -77,8 +77,8 @@ const Contact = () => {
             </div>
             
             <CardHeader className="relative z-10">
-              <CardTitle className="text-2xl text-foreground">Send a Message</CardTitle>
-              <CardDescription className="text-card-foreground">
+              <CardTitle className="text-xl sm:text-2xl text-foreground">Send a Message</CardTitle>
+              <CardDescription className="text-card-foreground text-sm sm:text-base">
                 Tell me about your project and let's start the conversation
               </CardDescription>
             </CardHeader>
@@ -140,12 +140,12 @@ const Contact = () => {
           </Card>
 
           {/* Enhanced Contact Methods */}
-          <div className="space-y-6">
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
                 Let's Connect
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm sm:text-base">
                 Choose your preferred way to reach out. I'm always excited to discuss new opportunities and interesting projects.
               </p>
             </div>
@@ -161,22 +161,22 @@ const Contact = () => {
                     }}></div>
                   </div>
                   
-                  <CardContent className="flex items-center justify-between p-6 relative z-10">
-                    <div className="flex items-center gap-4">
-                      <div className="text-3xl group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3">
+                  <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 relative z-10 gap-4">
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      <div className="text-2xl sm:text-3xl group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3 flex-shrink-0">
                         {method.icon}
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">{method.title}</h4>
-                        <p className="text-sm text-muted-foreground">{method.description}</p>
-                        <p className="text-sm text-primary font-medium">{method.value}</p>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300 text-sm sm:text-base">{method.title}</h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{method.description}</p>
+                        <p className="text-xs sm:text-sm text-primary font-medium truncate">{method.value}</p>
                       </div>
                     </div>
                     <Button 
                       variant="outline" 
                       size="sm" 
                       onClick={() => handleContactMethodClick(method)}
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:scale-105"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-xs sm:text-sm"
                     >
                       {method.action}
                     </Button>
