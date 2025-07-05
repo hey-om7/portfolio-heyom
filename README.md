@@ -1,73 +1,131 @@
-# Welcome to your Lovable project
+# Fullstack Portfolio Architect
 
-## Project info
+A modern, responsive portfolio website built with React, TypeScript, Vite, and Tailwind CSS. Features a fresh and punchy design with emerald green and purple accents.
 
-**URL**: https://lovable.dev/projects/a55978da-8e72-46b8-957e-b9f4bf27e9f8
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern Design**: Fresh and punchy color scheme with emerald green and purple accents
+- **Responsive**: Fully responsive design that works on all devices
+- **Smooth Animations**: Framer Motion animations for enhanced user experience
+- **TypeScript**: Full TypeScript support for better development experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **Shadcn/ui**: Beautiful and accessible UI components
+- **Dark Theme**: Elegant dark theme with custom color palette
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, Shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a55978da-8e72-46b8-957e-b9f4bf27e9f8) and start prompting.
+## 📦 Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone the repository:
+```bash
+git clone https://github.com/hey-om7/portfolio-2025.git
+cd portfolio-2025
+```
 
-**Use your preferred IDE**
+2. Install dependencies:
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Deployment
 
-**Use GitHub Codespaces**
+### Automatic Deployment (Recommended)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions. Simply push your changes to the `main` branch and the site will be automatically deployed.
 
-## What technologies are used for this project?
+### Manual Deployment
 
-This project is built with:
+1. Build the project for production:
+```bash
+npm run build:prod
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. Deploy to GitHub Pages:
+```bash
+npm run deploy
+```
 
-## How can I deploy this project?
+### GitHub Pages Setup
 
-Simply open [Lovable](https://lovable.dev/projects/a55978da-8e72-46b8-957e-b9f4bf27e9f8) and click on Share -> Publish.
+1. Go to your repository settings on GitHub
+2. Navigate to "Pages" in the sidebar
+3. Set the source to "GitHub Actions"
+4. Your site will be available at: `https://hey-om7.github.io/portfolio-2025/`
 
-## Can I connect a custom domain to my Lovable project?
+## 📁 Project Structure
 
-Yes, you can!
+```
+src/
+├── components/          # React components
+│   ├── Hero.tsx        # Hero section
+│   ├── Navigation.tsx  # Navigation bar
+│   ├── Experience.tsx  # Experience section
+│   ├── Projects.tsx    # Projects showcase
+│   ├── Technologies.tsx # Tech stack
+│   ├── OpenSource.tsx  # Open source contributions
+│   ├── ThreeD.tsx      # 3D modeling section
+│   └── Contact.tsx     # Contact form
+├── ui/                 # Shadcn/ui components
+├── index.css          # Global styles
+└── main.tsx           # App entry point
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🎨 Customization
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Colors
+The color scheme is defined in `src/index.css` using CSS custom properties:
+- Primary: Emerald green (`hsl(142 76% 36%)`)
+- Accent: Purple (`hsl(262 83% 58%)`)
+- Background: Dark blue (`hsl(240 10% 3.9%)`)
+
+### Content
+Update the content in each component file to match your information:
+- Personal details in `Hero.tsx`
+- Experience in `Experience.tsx`
+- Projects in `Projects.tsx`
+- Contact information in `Contact.tsx`
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:prod` - Build for production with optimized settings
+- `npm run preview` - Preview production build
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run lint` - Run ESLint
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Shadcn/ui](https://ui.shadcn.com/) for beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
+- [Framer Motion](https://www.framer.com/motion/) for animations
+- [Lucide](https://lucide.dev/) for icons
+
+---
+
+Made with ❤️ by Om Ambarkar
