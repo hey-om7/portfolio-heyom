@@ -1,6 +1,20 @@
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Modern Gradient Background */}
@@ -88,6 +102,7 @@ const Hero = () => {
             <Button 
               variant="default" 
               size="lg" 
+              onClick={scrollToProjects}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
             >
               <span className="group-hover:translate-x-1 transition-transform duration-300">View My Work</span>
@@ -96,6 +111,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
+              onClick={scrollToContact}
               className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
             >
               Get In Touch
