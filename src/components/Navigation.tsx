@@ -111,11 +111,11 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button with enhanced styling */}
+          {/* CTA Button with enhanced styling - hidden on mobile */}
           <Button 
             variant="default" 
             size="sm" 
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group"
+            className="hidden md:block bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group"
             onClick={() => scrollToSection("contact")}
           >
             <span className="group-hover:translate-x-0.5 transition-transform duration-300">Hire Me</span>
