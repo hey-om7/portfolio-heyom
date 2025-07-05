@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
                 I'm{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-purple-400 animate-text-glow">
                   {currentText}
-                  <span className="inline-block w-0.5 h-6 md:w-1 md:h-8 bg-emerald-400 ml-1 animate-pulse"></span>
+                  <span className="inline-block w-0.5 h-6 md:w-1 md:h-12 bg-emerald-400 ml-1 animate-pulse"></span>
                 </span>
               </h1>
             </motion.div>
@@ -180,7 +180,7 @@ const Hero: React.FC = () => {
 
           {/* Right Column - Profile Image */}
           <motion.div
-            className="flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0"
+            className="flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0 mt-8 lg:mt-0"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}

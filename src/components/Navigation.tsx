@@ -115,10 +115,17 @@ const Navigation = () => {
           <Button 
             variant="default" 
             size="sm" 
-            className="hidden md:block bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group"
+            className="hidden md:block bg-white/10 backdrop-blur-xl border border-white/20 text-white font-semibold hover:bg-white/15 hover:border-white/30 hover:text-white hover:shadow-xl hover:shadow-white/10 transition-all duration-300 transform hover:scale-105 group relative overflow-hidden"
             onClick={() => scrollToSection("contact")}
           >
-            <span className="group-hover:translate-x-0.5 transition-transform duration-300">Hire Me</span>
+            <span className="relative z-10 group-hover:translate-x-0.5 transition-transform duration-300">Hire Me</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm rounded-md"></div>
+            
+            {/* Glass Reflection Effects */}
+            <div className={`absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isScrolled ? 'opacity-30' : 'opacity-0'}`}></div>
+            <div className={`absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${isScrolled ? 'opacity-40' : 'opacity-0'}`}></div>
+            <div className={`absolute -top-1/2 -left-1/2 w-2 h-2 bg-white/40 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-all duration-1000 ${isScrolled ? 'opacity-60 animate-pulse' : 'opacity-0'}`}></div>
+            <div className={`absolute -top-1/4 -right-1/4 w-1 h-1 bg-white/50 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-all duration-1000 delay-200 ${isScrolled ? 'opacity-70 animate-pulse' : 'opacity-0'}`}></div>
           </Button>
 
           {/* Mobile menu button */}
