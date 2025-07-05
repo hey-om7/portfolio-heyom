@@ -1,147 +1,237 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronDown, Download, Mail } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
-const Hero = () => {
+const Hero: React.FC = () => {
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const fullText = "Om Ambarkar";
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (currentText === fullText) {
+          setIsDeleting(true);
+          setTimeout(() => setIsDeleting(false), 2000);
+        } else {
+          setCurrentText(fullText.slice(0, currentText.length + 1));
+        }
+      } else {
+        if (currentText === '') {
+          setIsDeleting(false);
+        } else {
+          setCurrentText(fullText.slice(0, currentText.length - 1));
+        }
+      }
+    }, isDeleting ? 100 : 200);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, fullText]);
+
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById("projects");
+    const projectsSection = document.getElementById('projects');
     if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
+    const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Modern Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-      
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 animate-gradient"></div>
-      
-      {/* Geometric Pattern Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)
-          `,
-          backgroundSize: '100% 100%'
-        }}></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Layered animated gradients */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-purple-600/10 to-emerald-500/10 animate-gradient"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-400/5 via-transparent to-purple-500/5 animate-gradient" style={{animationDelay: '1s'}}></div>
+        
+        {/* Geometric shapes */}
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-emerald-400/20 to-purple-500/20 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-40 right-32 w-24 h-24 bg-gradient-to-r from-purple-400/20 to-emerald-500/20 rounded-full blur-xl animate-float-delay-1"></div>
+        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-r from-emerald-300/20 to-purple-400/20 rounded-full blur-xl animate-float-delay-2"></div>
+        
+        {/* Floating dots */}
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-emerald-400 rounded-full animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-float-delay-1"></div>
+        <div className="absolute bottom-1/4 left-1/2 w-1.5 h-1.5 bg-emerald-300 rounded-full animate-float-delay-2"></div>
+        <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-purple-300 rounded-full animate-float"></div>
+        
+        {/* Rotating rings */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-emerald-400/10 rounded-full animate-rotate-slow"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-purple-400/10 rounded-full animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
+        
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 animate-shimmer opacity-20"></div>
       </div>
-      
-      {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
-      
-      {/* Floating Geometric Shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-xl animate-float"></div>
-      <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-r from-pink-500/30 to-orange-500/30 rounded-full blur-xl animate-float-delay-1"></div>
-      
-      {/* Modern Geometric Elements */}
-      <div className="absolute top-1/3 left-10 w-24 h-24 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-lg rotate-45 animate-float-delay-2"></div>
-      <div className="absolute bottom-1/3 right-16 w-20 h-20 bg-gradient-to-r from-purple-400/40 to-pink-500/40 rounded-full animate-float"></div>
-      
-      {/* Animated Lines */}
-      <div className="absolute top-1/4 left-1/4 w-1 h-32 bg-gradient-to-b from-transparent via-blue-400/50 to-transparent animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-1 h-32 bg-gradient-to-b from-transparent via-purple-400/50 to-transparent animate-pulse-slow" style={{animationDelay: '1s'}}></div>
-      
-      {/* Floating Dots */}
-      <div className="absolute top-1/2 left-1/3 w-2 h-2 bg-blue-400 rounded-full animate-bounce-slow"></div>
-      <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-400 rounded-full animate-bounce-slow" style={{animationDelay: '0.5s'}}></div>
-      <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-pink-400 rounded-full animate-bounce-slow" style={{animationDelay: '1s'}}></div>
-      
-      {/* Modern Wave Effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent"></div>
-      
-      {/* Animated Rings */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-blue-500/20 rounded-full animate-rotate-slow"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-purple-500/20 rounded-full animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
-      
-      {/* Shimmer Effect */}
-      <div className="absolute inset-0 animate-shimmer opacity-5"></div>
-      
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Animated greeting */}
-          <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-hero-text">
-              Hello,
-            </h1>
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-hero-text-delay-1">
-              I'm Om Ambarkar
-            </h1>
-          </div>
-          
-          {/* Enhanced subtitle with animation */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto animate-hero-text-delay-2 leading-relaxed">
-            Crafting digital experiences with modern technologies and creative solutions
-          </p>
-          
-          {/* Role/title badge */}
-          <div className="inline-block mb-8 animate-hero-text-delay-3">
-            <span className="px-6 py-3 bg-white/10 backdrop-blur-md text-white rounded-full text-lg font-medium border border-white/20 shadow-lg">
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div 
+            className="text-center lg:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Greeting */}
+            <motion.div
+              className="text-emerald-400 font-medium text-lg sm:text-xl mb-2 animate-hero-text"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Hello
+            </motion.div>
+
+            {/* Name with typing animation */}
+            <motion.div
+              className="mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-2">
+                I'm{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-purple-400 animate-text-glow">
+                  {currentText}
+                  <span className="inline-block w-1 h-8 bg-emerald-400 ml-1 animate-pulse"></span>
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Title */}
+            <motion.h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6 animate-hero-text-delay-1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               Full Stack Developer
-            </span>
-          </div>
-          
-          {/* Enhanced CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-hero-text-delay-4">
-            <Button 
-              variant="default" 
-              size="lg" 
-              onClick={scrollToProjects}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
+            </motion.h2>
+
+            {/* Description */}
+            <motion.p
+              className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 animate-hero-text-delay-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <span className="group-hover:translate-x-1 transition-transform duration-300">View My Work</span>
-              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              onClick={scrollToContact}
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
+              Crafting digital experiences with modern technologies. 
+              Passionate about creating innovative solutions that make a difference.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-hero-text-delay-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
             >
-              Get In Touch
-            </Button>
-          </div>
-          
-          {/* Quick stats */}
-          <div className="flex justify-center gap-8 mt-12 animate-hero-text-delay-5">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">3+</div>
-              <div className="text-sm text-gray-400">Years Experience</div>
+              <button
+                onClick={scrollToProjects}
+                className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 animate-button-hover"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  View My Work
+                  <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </button>
+
+              <button
+                onClick={scrollToContact}
+                className="group relative px-8 py-4 border-2 border-emerald-500/30 text-emerald-400 font-semibold rounded-xl hover:border-emerald-400 hover:bg-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1 animate-button-hover"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Get In Touch
+                  <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </span>
+              </button>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              className="flex justify-center lg:justify-start gap-8 mt-12 animate-hero-text-delay-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <div className="text-center">
+                <div className="text-2xl font-bold text-emerald-400">3+</div>
+                <div className="text-sm text-gray-400">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-400">50+</div>
+                <div className="text-sm text-gray-400">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-emerald-400">100%</div>
+                <div className="text-sm text-gray-400">Client Satisfaction</div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Profile Image */}
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-purple-400 rounded-full blur-2xl opacity-20 animate-pulse-slow"></div>
+              
+              {/* Profile image container */}
+              <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-emerald-400/20 shadow-2xl animate-card-hover">
+                <img
+                  src="/om-ambarkar.jpg"
+                  alt="Om Ambarkar"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+                {/* Fallback initials */}
+                <div className="hidden w-full h-full bg-gradient-to-br from-emerald-500 to-purple-600 items-center justify-center text-white text-6xl font-bold">
+                  OA
+                </div>
+              </div>
+
+              {/* Floating elements around image */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-400 rounded-full animate-bounce-slow"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400 rounded-full animate-bounce-slow" style={{animationDelay: '0.5s'}}></div>
+              <div className="absolute top-1/2 -right-8 w-4 h-4 bg-emerald-300 rounded-full animate-float"></div>
+              <div className="absolute bottom-1/2 -left-8 w-3 h-3 bg-purple-300 rounded-full animate-float-delay-1"></div>
+
+              {/* Decorative rings */}
+              <div className="absolute inset-0 border-2 border-emerald-400/30 rounded-full animate-rotate-slow"></div>
+              <div className="absolute inset-4 border border-purple-400/20 rounded-full animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">50+</div>
-              <div className="text-sm text-gray-400">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-pink-400">25k+</div>
-              <div className="text-sm text-gray-400">GitHub Stars</div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+      >
+        <ChevronDown className="w-6 h-6 text-emerald-400" />
+      </motion.div>
     </section>
   );
 };
