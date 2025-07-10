@@ -7,21 +7,21 @@ import { useState } from "react";
 
 const contactMethods = [
   {
-    icon: "📧",
+    icon: "/images/icons/📧 E Mail (Inbox, Email, Message).png",
     title: "Email",
     description: "Let's discuss your project",
     value: "om.ambarkar@gmail.com",
     action: "Send Email"
   },
   {
-    icon: "💼",
+    icon: "/images/icons/💼 Briefcase (Work, Business, Office).png",
     title: "LinkedIn", 
     description: "Connect professionally",
     value: "linkedin.com/in/omambarkar/",
     action: "Connect"
   },
   {
-    icon: "🐱",
+    icon: "/images/icons/🐱 Cat Face (Kitty, Feline, Meow).png",
     title: "GitHub",
     description: "Check out my code",
     value: "https://github.com/hey-om7",
@@ -226,7 +226,19 @@ const Contact = () => {
                   <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 relative z-10 gap-4">
                     <div className="flex items-center gap-4 flex-1 min-w-0">
                       <div className="text-2xl sm:text-3xl group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3 flex-shrink-0">
-                        {method.icon}
+                        {method.icon.startsWith('/') ? (
+                          <img 
+                            src={method.icon} 
+                            alt={method.title}
+                            className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <span className="text-2xl sm:text-3xl">{method.icon}</span>
+                        )}
                       </div>
                       <div className="min-w-0 flex-1">
                         <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300 text-sm sm:text-base">{method.title}</h4>
@@ -263,11 +275,55 @@ const Contact = () => {
             {/* Enhanced Response Time */}
             <Card className="bg-gradient-secondary border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
               <CardContent className="p-6">
-                <h4 className="font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">⚡ Quick Response</h4>
+                <h4 className="font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
+                  <img 
+                    src="/images/icons/⚡ High Voltage (Electricity, Danger, Warning).png" 
+                    alt="Quick Response"
+                    className="w-5 h-5 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                  Quick Response
+                </h4>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <p>📧 Email: Within 24 hours</p>
-                  <p>💼 LinkedIn: Within 12 hours</p>
-                  <p>📱 Urgent projects: Same day</p>
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="/images/icons/📧 E Mail (Inbox, Email, Message).png" 
+                      alt="Email"
+                      className="w-4 h-4 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <span>Email: Within 24 hours</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="/images/icons/💼 Briefcase (Work, Business, Office).png" 
+                      alt="LinkedIn"
+                      className="w-4 h-4 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <span>LinkedIn: Within 12 hours</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="/images/icons/📱 Mobile Phone (Smartphone, Device, Mobile).png" 
+                      alt="Urgent projects"
+                      className="w-4 h-4 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <span>Urgent projects: Same day</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>

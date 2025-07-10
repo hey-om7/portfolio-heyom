@@ -12,7 +12,7 @@ const projects = [
     image: "/images/dentolearn.png",
     technologies: ["React", "Node.js", "MongoDB", "Spring Boot", "Flutter", "Docker", "AWS S3", "AWS EC2", "AWS ALG"],
     github: null,
-    demo: "https://play.google.com/store/apps/datasafety?id=apps.oa.dentolearn&hl=en",
+    demo: "https://dentolearn.space/",
     featured: true
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
     image: "/images/attendle.png",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
-    github: "https://github.com/example/taskapp",
+    github: null,
     demo: null,
     featured: false
   },

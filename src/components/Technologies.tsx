@@ -3,14 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const techCategories = [
   {
     category: "Languages",
-    icon: "⚙️",
+    icon: "/images/icons/⚙️ Gear Mmechanical, System, Equipment).png",
     technologies: [
       "Java", "Python", "C", "Dart", "JavaScript", "SQL", "NoSQL", "HTML", "CSS"
     ]
   },
   {
     category: "Frameworks", 
-    icon: "🛠️",
+    icon: "/images/icons/🛠️ Hammer And Wrench (DIY, Maintenance, Handyman).png",
     technologies: [
       "Spring Boot", "ReactJs", "Flask", "Django", "Hibernate", "FastAPI",
       "REST APIs", "WebSocket", "Microservices", "Serverless"
@@ -18,7 +18,7 @@ const techCategories = [
   },
   {
     category: "Database",
-    icon: "🗄️", 
+    icon: "/images/icons/🗄️ File Cabinet (Organization, Storage, Files).png", 
     technologies: [
       "PostgreSQL", "MongoDB", "Redis", "MySQL", "DynamoDB",
        "Firebase"
@@ -26,7 +26,7 @@ const techCategories = [
   },
   {
     category: "Technologies",
-    icon: "🚀",
+    icon: "/images/icons/🚀 Rocket (Spacecraft, Rocketship, SpaceX).png",
     technologies: [
       "Docker", "Kubernetes", "AWS-EC2", "AWS-S3", "AWS-Lambda",
       "AWS-DynamoDB",
@@ -36,7 +36,7 @@ const techCategories = [
   },
   {
     category: "Tools & Others",
-    icon: "🔧",
+    icon: "/images/icons/🔧 Wrench (Plumbing, Mechanical, Spanner).png",
     technologies: [
       "Git", "VS Code", "Figma", "Postman", "Swagger", "Jira",
       "Confluence",
@@ -75,8 +75,20 @@ const Technologies = () => {
               </div>
               
               <CardHeader className="text-center pb-4 relative z-10">
-                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3">
-                  {category.icon}
+                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3 flex justify-center">
+                  {category.icon.startsWith('/') ? (
+                    <img 
+                      src={category.icon} 
+                      alt={category.category}
+                      className="w-12 h-12 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span>{category.icon}</span>
+                  )}
                 </div>
                 <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">
                   {category.category}
@@ -107,17 +119,47 @@ const Technologies = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥇</div>
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                <img 
+                  src="/images/icons/🥇 1st Place Medal (Gold, Winner, Victory).png" 
+                  alt="Expert"
+                  className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Expert</h4>
               <p className="text-sm text-muted-foreground">Spring Boot, Flutter, MongoDB, AWS, Python, SQL</p>
             </div>
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥈</div>
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                <img 
+                  src="/images/icons/🥈 2nd Place Medal (Silver, Second, Runner-Up).png" 
+                  alt="Advanced"
+                  className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Advanced</h4>
               <p className="text-sm text-muted-foreground">ReactJS</p>
             </div>
             <div className="text-center p-6 rounded-lg bg-gradient-secondary border border-border/50 hover:shadow-xl transition-all duration-500 hover:scale-105 group">
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🥉</div>
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                <img 
+                  src="/images/icons/🥉 3rd Place Medal (Bronze, Third, Award).png" 
+                  alt="Intermediate"
+                  className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
               <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">Intermediate</h4>
               <p className="text-sm text-muted-foreground">Kubernetes, Machine Learning</p>
             </div>

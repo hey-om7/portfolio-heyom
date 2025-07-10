@@ -110,7 +110,18 @@ const OpenSource = () => {
                         <div className="w-3 h-3 rounded-full bg-primary"></div>
                         {contrib.language}
                       </span>
-                      <span>⭐ {contrib.stars.toLocaleString()}</span>
+                      <span className="flex items-center gap-1">
+                        <img 
+                          src="/images/icons/⭐ Star (Celestial, Night, Sky).png" 
+                          alt="Stars"
+                          className="w-4 h-4 object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        {contrib.stars.toLocaleString()}
+                      </span>
                     </div>
                     <span className="text-sm font-medium text-accent">{contrib.impact}</span>
                   </div>
@@ -156,8 +167,30 @@ const OpenSource = () => {
                       {project.language}
                     </span>
                     <div className="flex gap-3">
-                      <span>⭐ {project.stars}</span>
-                      <span>🍴 {project.forks}</span>
+                      <span className="flex items-center gap-1">
+                        <img 
+                          src="/images/icons/⭐ Star (Celestial, Night, Sky).png" 
+                          alt="Stars"
+                          className="w-4 h-4 object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        {project.stars}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <img 
+                          src="/images/icons/🍴 Fork And Knife (Cutlery, Utensils, Tableware).png" 
+                          alt="Forks"
+                          className="w-4 h-4 object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        {project.forks}
+                      </span>
                     </div>
                   </div>
                   <div className="text-center mb-4">

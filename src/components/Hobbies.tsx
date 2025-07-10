@@ -6,7 +6,7 @@ const hobbies = [
   {
     title: "3D Modeling & Design",
     description: "Creating immersive 3D experiences and visualizations using Blender, Fusion 360, and Maya. From architectural visualization to product design prototypes.",
-    icon: "🎨",
+    icon: "/images/icons/🎨 Artist Palette (Art, Painting, Colors).png",
     category: "Creative Design",
     skills: ["Blender", "Fusion 360", "Maya", "3ds Max", "V-Ray"],
     status: "Learning",
@@ -15,7 +15,7 @@ const hobbies = [
   {
     title: "IoT Development",
     description: "Building smart devices and connected systems using Arduino, Raspberry Pi, and various sensors. Creating automation solutions and home IoT projects.",
-    icon: "🔌",
+    icon: "/images/icons/🔌 Electric Plug (Power, Electricity, Socket).png",
     category: "Hardware & Electronics",
     skills: ["Arduino", "Raspberry Pi", "ESP32", "MQTT", "Node.js"],
     status: "Active",
@@ -24,7 +24,7 @@ const hobbies = [
   {
     title: "UI/UX Design",
     description: "Designing beautiful and intuitive user interfaces using modern design tools. Creating wireframes, prototypes, and user experience flows.",
-    icon: "🎯",
+    icon: "/images/icons/🎯 Direct Hit (Target, Score, Arrow).png",
     category: "Design & Prototyping",
     skills: ["Figma", "Adobe XD", "Sketch", "InVision", "Principle"],
     status: "Active",
@@ -70,8 +70,20 @@ const Hobbies = () => {
               </Badge>
               
               <CardHeader className="text-center pb-4">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3">
-                  {hobby.icon}
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3 flex justify-center">
+                  {hobby.icon.startsWith('/') ? (
+                    <img 
+                      src={hobby.icon} 
+                      alt={hobby.title}
+                      className="w-16 h-16 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span className="text-5xl">{hobby.icon}</span>
+                  )}
                 </div>
                 <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">
                   {hobby.title}
