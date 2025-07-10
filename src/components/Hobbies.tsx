@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const hobbies = [
   {
@@ -127,83 +128,98 @@ const Hobbies = () => {
           ))}
         </div>
 
-        {/* Skills Progress */}
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
-            Skills Proficiency
-          </h3>
-          <Card className="bg-gradient-secondary border-border/50">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                {hobbySkills.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-2">
-                      <div>
-                        <span className="text-foreground font-medium">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground ml-2">({skill.category})</span>
-                      </div>
-                      <span className="text-primary font-bold">{skill.level}%</span>
+        {/* View More Dialog Trigger */}
+        <div className="text-center mb-12">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 group">
+                View More
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Skills Proficiency &amp; Tools</DialogTitle>
+              </DialogHeader>
+              {/* Skills Proficiency */}
+              <div className="mb-10">
+                <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+                  Skills Proficiency
+                </h3>
+                <Card className="bg-gradient-secondary border-border/50">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {hobbySkills.map((skill, index) => (
+                        <div key={index}>
+                          <div className="flex justify-between mb-2">
+                            <div>
+                              <span className="text-foreground font-medium">{skill.name}</span>
+                              <span className="text-xs text-muted-foreground ml-2">({skill.category})</span>
+                            </div>
+                            <span className="text-primary font-bold">{skill.level}%</span>
+                          </div>
+                          <div className="w-full bg-muted rounded-full h-2">
+                            <div 
+                              className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out"
+                              style={{ width: `${skill.level}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                  </CardContent>
+                </Card>
+              </div>
+              {/* Tools & Technologies */}
+              <div className="mt-8 text-center">
+                <h3 className="text-2xl font-bold mb-8 text-foreground">
+                  Tools &amp; Technologies
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">3D Design</h4>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {["Blender", "Fusion 360", "Maya", "3ds Max", "V-Ray"].map((tool, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                ))}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">IoT &amp; Hardware</h4>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {["Arduino", "Raspberry Pi", "ESP32", "MQTT", "Node.js"].map((tool, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">UI/UX Design</h4>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {["Figma", "Adobe XD", "Sketch", "InVision", "Principle"].map((tool, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
+            </DialogContent>
+          </Dialog>
         </div>
 
-        {/* Tools & Technologies */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold mb-8 text-foreground">
-            Tools & Technologies
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-primary">3D Design</h4>
-              <div className="flex flex-wrap justify-center gap-2">
-                {["Blender", "Fusion 360", "Maya", "3ds Max", "V-Ray"].map((tool, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-primary">IoT & Hardware</h4>
-              <div className="flex flex-wrap justify-center gap-2">
-                {["Arduino", "Raspberry Pi", "ESP32", "MQTT", "Node.js"].map((tool, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-primary">UI/UX Design</h4>
-              <div className="flex flex-wrap justify-center gap-2">
-                {["Figma", "Adobe XD", "Sketch", "InVision", "Principle"].map((tool, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gradient-secondary border border-border/50 text-foreground rounded-lg hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-sm"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
