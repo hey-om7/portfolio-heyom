@@ -205,7 +205,7 @@ const Hero: React.FC = () => {
                 {/* Fallback image */}
                 <div className="hidden w-full h-full bg-gradient-to-br from-emerald-500 to-purple-600 items-center justify-center">
                   <img
-                    src="/images/om-insta-dp.png"
+                    src="/images/om-insta-dp.jpeg"
                     alt="Om Ambarkar"
                     className="w-full h-full object-cover"
                     onError={(e) => {
