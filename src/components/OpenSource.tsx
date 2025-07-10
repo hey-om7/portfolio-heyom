@@ -144,18 +144,42 @@ const OpenSource = () => {
             <CardContent className="p-8">
               <div className="grid md:grid-cols-4 gap-6 text-center">
                 <div>
+                  <img
+                    src="/images/icons/🎯 Direct Hit (Target, Score, Arrow).png"
+                    alt="Contributions"
+                    className="w-8 h-8 mx-auto mb-2"
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
                   <div className="text-3xl font-bold text-primary mb-2">50+</div>
                   <div className="text-muted-foreground">Contributions</div>
                 </div>
                 <div>
+                  <img
+                    src="/images/icons/⭐ Star (Celestial, Night, Sky).png"
+                    alt="Stars"
+                    className="w-8 h-8 mx-auto mb-2"
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
                   <div className="text-3xl font-bold text-accent mb-2">1500+</div>
                   <div className="text-muted-foreground">Stars Earned</div>
                 </div>
                 <div>
+                  <img
+                    src="/images/icons/🎨 Artist Palette (Art, Painting, Colors).png"
+                    alt="Own Projects"
+                    className="w-8 h-8 mx-auto mb-2"
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
                   <div className="text-3xl font-bold text-primary mb-2">20+</div>
                   <div className="text-muted-foreground">Own Projects</div>
                 </div>
-                <div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src="/images/icons/📱 Mobile Phone (Smartphone, Device, Mobile).png"
+                    alt="Downloads"
+                    className="w-8 h-8 mx-auto mb-2"
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
                   <div className="text-3xl font-bold text-accent mb-2">2000+</div>
                   <div className="text-muted-foreground">Downloads</div>
                 </div>
