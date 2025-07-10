@@ -1,73 +1,35 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
-const contributions = [
-  {
-    project: "React DevTools",
-    description: "Enhanced performance monitoring features and fixed memory leak detection bugs. Contributed to developer experience improvements.",
-    language: "JavaScript", 
-    stars: 15200,
-    role: "Core Contributor",
-    impact: "Used by 2M+ developers",
-    link: "https://github.com/facebook/react"
-  },
-  {
-    project: "TailwindCSS",
-    description: "Added new utility classes for container queries and improved responsive design patterns. Documentation improvements.",
-    language: "CSS",
-    stars: 78500,
-    role: "Contributor",
-    impact: "10+ merged PRs",
-    link: "https://github.com/tailwindlabs/tailwindcss"
-  },
-  {
-    project: "Node.js",
-    description: "Performance optimizations in the HTTP module and bug fixes for async/await handling in specific edge cases.",
-    language: "C++",
-    stars: 102000,
-    role: "Contributor", 
-    impact: "Critical bug fixes",
-    link: "https://github.com/nodejs/node"
-  },
-  {
-    project: "TypeScript",
-    description: "Improved type inference for generic functions and contributed to better error messages for complex type scenarios.",
-    language: "TypeScript",
-    stars: 97800,
-    role: "Contributor",
-    impact: "Enhanced DX",
-    link: "https://github.com/microsoft/TypeScript"
-  }
-];
+import { ExternalLink } from 'lucide-react';
 
 const ownProjects = [
   {
-    name: "React Form Builder",
-    description: "A drag-and-drop form builder component for React applications with validation, theming, and export capabilities.",
-    language: "TypeScript",
-    stars: 1250,
-    forks: 89,
+    name: "Package: back_pressed",
+    description: "A lightweight Flutter plugin to intercept Android back button presses and trigger custom actions. Designed for smoother user flows and controlled navigation.\n✅ Used in 100+ apps | ⭐ Minimal, reliable, and production-ready",
+    language: "Dart",
+    stars: 140,
+    downloads: 134,
     status: "Active",
-    downloads: "15k/month"
+    pubUrl: "https://pub.dev/packages/back_pressed"
   },
   {
-    name: "Vue Router Guards",
-    description: "Enhanced route protection utilities for Vue.js applications with authentication and permission checking.",
-    language: "JavaScript", 
-    stars: 890,
-    forks: 156,
-    status: "Maintained",
-    downloads: "8k/month"
+    name: "Package: essential_kit",
+    description: "A curated collection of must-have Flutter widgets and utilities to kickstart any app. From reusable components to core helper functions, it’s your all-in-one starter pack for efficient development.\n🚀 Developer-ready | 🧩 Plug-and-play essentials | 📦 Compact & practical",
+    language: "Dart",
+    stars: 120,
+    downloads: 60,
+    status: "Active",
+    pubUrl: "https://pub.dev/packages/essential_kit"
   },
   {
-    name: "Express Middleware Toolkit",
-    description: "Collection of useful Express.js middleware for logging, authentication, rate limiting, and error handling.",
-    language: "JavaScript",
-    stars: 2100,
-    forks: 234,
+    name: "Package: public_ip",
+    description: "A cross-platform Dart package to fetch the user’s public IP address and approximate geolocation details. Instantly access IP, location, ISP, and more — all with a single call.\n🌍 Multi-platform | 📡 IP & Location Lookup | ⚙️ Dart 3 Ready",
+    language: "Dart",
+    stars: 100,
+    downloads: 236,
     status: "Active",
-    downloads: "22k/month"
+    pubUrl: "https://pub.dev/packages/public_ip"
   }
 ];
 
@@ -84,56 +46,6 @@ const OpenSource = () => {
           </p>
         </div>
 
-        {/* Major Contributions */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
-            Major Contributions
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {contributions.map((contrib, index) => (
-              <Card key={index} className="group bg-gradient-secondary border-border/50 hover:shadow-card transition-all duration-300 hover:scale-[1.02]">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl text-foreground">{contrib.project}</CardTitle>
-                    <Badge variant="secondary" className="bg-accent/10 text-accent">
-                      {contrib.role}
-                    </Badge>
-                  </div>
-                  <CardDescription className="text-card-foreground">
-                    {contrib.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <div className="w-3 h-3 rounded-full bg-primary"></div>
-                        {contrib.language}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <img 
-                          src="/images/icons/⭐ Star (Celestial, Night, Sky).png" 
-                          alt="Stars"
-                          className="w-4 h-4 object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                          }}
-                        />
-                        {contrib.stars.toLocaleString()}
-                      </span>
-                    </div>
-                    <span className="text-sm font-medium text-accent">{contrib.impact}</span>
-                  </div>
-                  <Button variant="outline" size="sm" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                    View Contribution
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
         {/* Own Projects */}
         <div>
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
@@ -141,7 +53,7 @@ const OpenSource = () => {
           </h3>
           <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {ownProjects.map((project, index) => (
-              <Card key={index} className="group bg-gradient-secondary border-border/50 hover:shadow-card transition-all duration-300 hover:scale-[1.02]">
+              <Card key={index} className="group bg-gradient-secondary border-border/50 hover:shadow-card transition-all duration-300 hover:scale-[1.02] flex flex-col">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg text-foreground">{project.name}</CardTitle>
@@ -160,7 +72,7 @@ const OpenSource = () => {
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <div className="w-3 h-3 rounded-full bg-primary"></div>
@@ -180,30 +92,45 @@ const OpenSource = () => {
                         {project.stars}
                       </span>
                       <span className="flex items-center gap-1">
-                        <img 
-                          src="/images/icons/🍴 Fork And Knife (Cutlery, Utensils, Tableware).png" 
-                          alt="Forks"
-                          className="w-4 h-4 object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                          }}
-                        />
-                        {project.forks}
+                        <span className="font-medium text-accent">⬇️</span>
+                        {project.downloads}
+                        <span className="text-xs text-muted-foreground">downloads</span>
                       </span>
                     </div>
                   </div>
-                  <div className="text-center mb-4">
-                    <span className="text-accent font-medium">{project.downloads}</span>
-                    <span className="text-muted-foreground text-sm"> downloads</span>
+                  <div className="text-center mb-4 flex items-center justify-center gap-2">
+                    <img
+                      src="/images/icons/🚀 Rocket (Spacecraft, Rocketship, SpaceX).png"
+                      alt="Powering"
+                      className="w-5 h-5 inline-block"
+                      style={{ display: 'inline-block' }}
+                      onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                    <span className="text-accent font-medium">
+                      Powering {project.downloads}+ Projects
+                    </span>
+                    <span className="text-xl">📦</span>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex-1" />
+                  <div className="flex gap-2 pt-2 mt-2">
                     <Button variant="outline" size="sm" className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                       GitHub
                     </Button>
-                    <Button variant="outline" size="sm" className="flex-1 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                      NPM
-                    </Button>
+                    <a
+                      href={project.pubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2"
+                        type="button"
+                      >
+                        View on pub.dev <ExternalLink className="w-4 h-4" />
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -221,16 +148,16 @@ const OpenSource = () => {
                   <div className="text-muted-foreground">Contributions</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent mb-2">25k+</div>
+                  <div className="text-3xl font-bold text-accent mb-2">1500+</div>
                   <div className="text-muted-foreground">Stars Earned</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">3</div>
+                  <div className="text-3xl font-bold text-primary mb-2">20+</div>
                   <div className="text-muted-foreground">Own Projects</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent mb-2">45k</div>
-                  <div className="text-muted-foreground">Monthly Downloads</div>
+                  <div className="text-3xl font-bold text-accent mb-2">2000+</div>
+                  <div className="text-muted-foreground">Downloads</div>
                 </div>
               </div>
             </CardContent>
