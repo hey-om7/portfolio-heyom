@@ -27,7 +27,7 @@ const projects = [
   {
     title: "Forest Fire Prediction",
     description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
-    image: "/images/forest-fire.png",
+    image: "/images/forest-fire.jpeg",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
     github: "https://github.com/hey-om7/forest-fire-predictor",
     demo: null,
@@ -36,7 +36,7 @@ const projects = [
   {
     title: "Project Attendle",
     description: "Developed a machine learning-powered forest fire prediction system with an impressive accuracy of 98%. Utilized Python and Pandas for data processing and model development. Frontend built using ReactJS for interactive visualization and user interface.",
-    image: "/images/attendle.png",
+    image: "/images/attendle.jpeg",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "PWA"],
     github: null,
     demo: null,
