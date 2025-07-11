@@ -347,13 +347,19 @@ const Contact = () => {
             >
               <span className="group-hover:translate-x-0.5 transition-transform duration-300">Schedule a Call</span>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105"
+            <a
+              href="/om-resume.pdf"
+              download="Om-Resume.pdf"
+              style={{ textDecoration: 'none' }}
             >
-              View Resume
-            </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105"
+              >
+                View Resume
+              </Button>
+            </a>
           </div>
         </div>
       </div>
