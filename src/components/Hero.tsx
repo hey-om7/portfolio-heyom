@@ -173,7 +173,7 @@ const Hero: React.FC = () => {
               </div>
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold text-emerald-400">100%</div>
-                <div className="text-xs sm:text-sm text-gray-400">Client Satisfaction</div>
+                <div className="text-xs sm:text-sm text-gray-400">On-Time Delivery</div>
               </div>
             </motion.div>
           </motion.div>
